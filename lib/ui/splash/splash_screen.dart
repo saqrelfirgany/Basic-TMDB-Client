@@ -1,5 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:tmdb/controllers/product_controller.dart';
+import 'package:tmdb/route/routes.dart';
 
 import '../../utils/assets_helper.dart';
 
@@ -15,9 +20,14 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> _animation;
   late AnimationController _animationController;
 
+  void _loadData() async {
+    await Get.find<ProductController>().geProductList();
+  }
+
   @override
   void initState() {
     super.initState();
+    _loadData();
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
@@ -26,6 +36,13 @@ class _SplashScreenState extends State<SplashScreen>
       parent: _animationController,
       curve: Curves.linear,
     );
+    Timer(const Duration(seconds: 3), () => Get.offNamed(Routes.mainScreen));
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -33,10 +50,16 @@ class _SplashScreenState extends State<SplashScreen>
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            Image.asset(assets['logo'], width: 250.h),
-          ],
+        body: ScaleTransition(
+          scale: _animation,
+          child: Center(
+            child: Image.asset(
+              assets['logo'],
+              fit: BoxFit.cover,
+              height: 120.h,
+              width: 120.h,
+            ),
+          ),
         ),
       ),
     );

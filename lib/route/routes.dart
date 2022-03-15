@@ -5,13 +5,19 @@ import 'package:tmdb/ui/splash/splash_screen.dart';
 
 import '../ui/main.dart';
 
+class Routes {
+  static const splash = '/';
+  static const mainScreen = '/main-screen';
+}
+
 List<GetPage> routes = [
   ///
   /// Splash Screen
   ///
   GetPage(
-    name: '/',
+    name: Routes.splash,
     page: () => const SplashScreen(),
+    transition: Transition.fadeIn,
   ),
 
   /// -------------------------------------------------------------
@@ -20,7 +26,7 @@ List<GetPage> routes = [
   /// Main Screen
   ///
   GetPage(
-    name: '/main-screen',
+    name: Routes.mainScreen,
     page: () => MainScreen(),
     transition: Transition.fadeIn,
   ),

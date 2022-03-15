@@ -8,7 +8,7 @@ class ProductRepo extends GetxService {
 
   ProductRepo({required this.apiClient});
 
-  Future<Response> getPopularProduct() async {
+  Future<Response> getProduct() async {
     return await apiClient.getData(AppConstants.productUri);
   }
 }
