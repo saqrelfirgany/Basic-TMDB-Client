@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:tmdb/controllers/product_controller.dart';
+import 'package:tmdb/controllers/movie_controller.dart';
 import 'package:tmdb/route/routes.dart';
 
 import '../../utils/assets_helper.dart';
@@ -21,13 +21,10 @@ class _SplashScreenState extends State<SplashScreen>
   late AnimationController _animationController;
 
   void _loadData() async {
-    await Get.find<ProductController>().geProductList();
+    await Get.find<MovieController>().geProductList();
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
+  void _animationState() {
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
@@ -36,7 +33,17 @@ class _SplashScreenState extends State<SplashScreen>
       parent: _animationController,
       curve: Curves.linear,
     );
-    Timer(const Duration(seconds: 3), () => Get.offNamed(Routes.mainScreen));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+    _animationState();
+    Timer(
+      const Duration(seconds: 3),
+      () => Get.offNamed(Routes.mainScreen),
+    );
   }
 
   @override

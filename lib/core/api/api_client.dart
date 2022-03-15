@@ -22,9 +22,9 @@ class ApiClient extends GetConnect implements GetxService {
   Future<dynamic> getData(String uri) async {
     try {
       final response = await get(uri, query: _query);
-      print(response.statusCode);
+      // print(response.statusCode);
       print(response.body);
-      print(response);
+      // print(response);
 
       ///
       /// Check if the response is null or not

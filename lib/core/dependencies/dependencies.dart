@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../controllers/product_controller.dart';
+import '../../controllers/movie_controller.dart';
 import '../../utils/app_constants.dart';
 import '../api/api_client.dart';
 import '../repository/product_repo.dart';
@@ -19,5 +19,5 @@ Future<void> init() async {
   ///
   /// Controller
   ///
-  Get.lazyPut(() => ProductController(productRepo: Get.find()));
+  Get.lazyPut(() => MovieController(productRepo: Get.find()));
 }
