@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../ui/components.dart';
 import '../../utils/app_constants.dart';
 
 class ApiClient extends GetConnect implements GetxService {
@@ -22,13 +23,16 @@ class ApiClient extends GetConnect implements GetxService {
   Future<dynamic> getData(String uri) async {
     try {
       final response = await get(uri, query: _query);
-      // print(response.statusCode);
-      print(response.body);
-      // print(response);
 
       ///
       /// Check if the response is null or not
       ///
+      if (response.body == null || response.hasError) {
+        getSnackBar(
+          title: 'Error',
+          body: 'Please check your internet connection',
+        );
+      }
       return response;
     } catch (e) {
       return Response(statusCode: 1, statusText: e.toString());

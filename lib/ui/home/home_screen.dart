@@ -4,6 +4,7 @@ import 'package:tmdb/ui/widgets/big_text.dart';
 import 'package:tmdb/ui/widgets/small_text.dart';
 
 import '../../utils/colors.dart';
+import 'movie_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -53,10 +54,11 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
+            SizedBox(height: 10.h),
+            const Expanded(
               child: SingleChildScrollView(
                 // child: FoodPageBody(),
-                child: Container(child: Center(child: Text('0'))),
+                child: MovieList(),
               ),
             ),
           ],

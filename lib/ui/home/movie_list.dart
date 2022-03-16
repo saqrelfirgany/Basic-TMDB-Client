@@ -17,17 +17,18 @@ class MovieList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MovieController>(
-      builder: (recommendedController) => recommendedController.isLoading
+      builder: (movieController) => movieController.isLoading
           ? const Center(
               child: CircularProgressIndicator(color: AppColors.mainColor),
             )
           : ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: recommendedController.movieList.length,
+              itemCount: movieController.movieList.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () => Get.toNamed('/recommended-popular-detail?pageId=$index'),
+                  // onTap: () => Get.toNamed('/recommended-popular-detail?pageId=$index'),
+                  onTap: () {},
                   child: Container(
                     margin: EdgeInsetsDirectional.only(
                       start: 20.w,
@@ -45,9 +46,9 @@ class MovieList extends StatelessWidget {
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
-                                AppConstants.uploadUri +
-                                    recommendedController
-                                        .movieList[index].img!,
+                                AppConstants.imageUri +
+                                    movieController
+                                        .movieList[index].posterPath!,
                               ),
                             ),
                           ),
@@ -73,17 +74,41 @@ class MovieList extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 BigText(
-                                  text: recommendedController
-                                      .movieList[index].name!,
+                                  text: movieController.movieList[index].title!,
                                 ),
                                 SizedBox(height: 8.h),
                                 SmallText(
-                                  text: recommendedController
-                                      .movieList[index].description!,
+                                  text: movieController
+                                      .movieList[index].overview!,
                                   overFlow: true,
                                 ),
                                 const Spacer(),
-                                buildSubHeaderDetailsRowIcons(),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    IconText(
+                                      icon: Icons.favorite,
+                                      text: movieController
+                                          .movieList[index].voteAverage
+                                          .toString(),
+                                      iconColor: AppColors.iconColor1,
+                                    ),
+                                    IconText(
+                                      icon: Icons.visibility,
+                                      text: movieController
+                                          .movieList[index].popularity
+                                          .toInt()
+                                          .toString(),
+                                      iconColor: AppColors.mainColor,
+                                    ),
+                                    const IconText(
+                                      icon: Icons.access_time_rounded,
+                                      text: '32min',
+                                      iconColor: AppColors.iconColor2,
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
                           ),
@@ -96,53 +121,4 @@ class MovieList extends StatelessWidget {
             ),
     );
   }
-}
-Widget buildSubHeaderDetailsRowIcons() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: const [
-      IconText(
-        icon: Icons.circle_sharp,
-        text: 'Normal',
-        iconColor: AppColors.iconColor1,
-      ),
-      IconText(
-        icon: Icons.location_on,
-        text: '1.7Km',
-        iconColor: AppColors.mainColor,
-      ),
-      IconText(
-        icon: Icons.access_time_rounded,
-        text: '32min',
-        iconColor: AppColors.iconColor2,
-      ),
-    ],
-  );
-}
-Widget recommendedTitle() {
-  ///
-  ///The Recommended Food list home screen section 2
-  ///
-  return Container(
-    margin: EdgeInsetsDirectional.only(start: 30.w),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        BigText(text: 'Recommended'),
-        SizedBox(width: 10.w),
-        Container(
-          margin: EdgeInsetsDirectional.only(bottom: 3.h),
-          child: BigText(
-            text: '.',
-            color: Colors.black26,
-          ),
-        ),
-        SizedBox(width: 10.w),
-        Container(
-          margin: EdgeInsetsDirectional.only(bottom: 2.h),
-          child: SmallText(text: 'Food Pairing'),
-        ),
-      ],
-    ),
-  );
 }

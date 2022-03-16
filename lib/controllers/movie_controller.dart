@@ -16,7 +16,7 @@ class MovieController extends GetxController {
 
   bool get isLoading => _isLoading;
 
-  Future<void> geProductList() async {
+  Future<void> geMovieList() async {
     _isLoading = true;
     Response response = await productRepo.getProduct();
 
