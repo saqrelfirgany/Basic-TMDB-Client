@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:tmdb/utils/colors.dart';
 
 import 'home/home_screen.dart';
 
@@ -17,9 +18,8 @@ class _MainScreenState extends State<MainScreen> {
   List<Widget> _buildScreens() {
     return [
       HomeScreen(),
-      Container(child: Center(child: Text('1'))),
-      Container(child: Center(child: Text('2'))),
-      Container(child: Center(child: Text('3'))),
+      Container(child: Center(child: Text('Favorite'))),
+      Container(child: Center(child: Text('Profile'))),
     ];
   }
 
@@ -28,25 +28,19 @@ class _MainScreenState extends State<MainScreen> {
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.home),
         title: ("Home"),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        activeColorPrimary: AppColors.mainColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.archivebox),
-        title: ("Archive"),
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.shopping_cart),
-        title: ("Cart"),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        icon: const Icon(CupertinoIcons.heart),
+        title: ("Favorite"),
+        activeColorPrimary: AppColors.mainColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.person),
         title: ("Profile"),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        activeColorPrimary: AppColors.mainColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
     ];
@@ -100,7 +94,7 @@ class _MainScreenState extends State<MainScreen> {
         duration: Duration(milliseconds: 200),
       ),
       navBarStyle:
-      NavBarStyle.style6, // Choose the nav bar style with this property.
+          NavBarStyle.style6, // Choose the nav bar style with this property.
     );
   }
 }

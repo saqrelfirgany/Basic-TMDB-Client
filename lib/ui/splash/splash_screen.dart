@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> _animation;
   late AnimationController _animationController;
 
-  void _loadData() async {
+  Future<void>  _loadData() async {
     await Get.find<MovieController>().geMovieList();
   }
 

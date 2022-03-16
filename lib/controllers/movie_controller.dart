@@ -31,5 +31,6 @@ class MovieController extends GetxController {
       _isLoading = false;
       update();
     } else {}
+    update();
   }
 }
