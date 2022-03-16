@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:tmdb/ui/profile/profile_screen.dart';
 import 'package:tmdb/utils/colors.dart';
 
 import 'home/home_screen.dart';
@@ -19,7 +20,7 @@ class _MainScreenState extends State<MainScreen> {
     return [
       HomeScreen(),
       Container(child: Center(child: Text('Favorite'))),
-      Container(child: Center(child: Text('Profile'))),
+      ProfileScreen(),
     ];
   }
 
