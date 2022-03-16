@@ -5,6 +5,7 @@ import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 import '../../controllers/movie_controller.dart';
+import '../../route/routes.dart';
 import '../../utils/app_constants.dart';
 import '../../utils/colors.dart';
 import '../widgets/big_text.dart';
@@ -27,8 +28,7 @@ class MovieList extends StatelessWidget {
               itemCount: movieController.movieList.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  // onTap: () => Get.toNamed('/recommended-popular-detail?pageId=$index'),
-                  onTap: () {},
+                  onTap: () => Get.toNamed('${Routes.detailScreen}?pageId=$index'),
                   child: Container(
                     margin: EdgeInsetsDirectional.only(
                       start: 20.w,

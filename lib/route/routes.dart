@@ -4,10 +4,12 @@ import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:tmdb/ui/splash/splash_screen.dart';
 
 import '../ui/main_screen.dart';
+import '../ui/recommended/movie_detail.dart';
 
 class Routes {
   static const splash = '/';
   static const mainScreen = '/main-screen';
+  static const detailScreen = '/detail-screen';
 }
 
 List<GetPage> routes = [
@@ -27,7 +29,16 @@ List<GetPage> routes = [
   ///
   GetPage(
     name: Routes.mainScreen,
-    page: () => MainScreen(),
+    page: () => const MainScreen(),
+    transition: Transition.fadeIn,
+  ),
+
+  GetPage(
+    name: Routes.detailScreen,
+    page: () {
+      var index = Get.parameters['pageId'];
+      return MovieDetailScreen(pageId: int.parse(index!));
+    },
     transition: Transition.fadeIn,
   ),
 ];
