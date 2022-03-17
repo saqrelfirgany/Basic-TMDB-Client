@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:tmdb/core/repository/login_reop.dart';
 import 'package:tmdb/models/login_model.dart';
 import 'package:tmdb/models/response_model.dart';
+import 'package:tmdb/route/routes.dart';
 
 import '../ui/components.dart';
 
@@ -91,19 +92,21 @@ class LoginController extends GetxController {
       return;
     }
     _isLoading = true;
+    update();
+
+    final Response tokenResponse = await loginRepo.getServerToken();
     LoginModel loginModel = LoginModel(
       name: userNameController.text.trim(),
       password: passwordController.text.trim(),
+      token: tokenResponse.body['request_token'],
     );
-    update();
-    print(loginModel.toJson());
     final Response response =
         await loginRepo.getRegister(loginModel: loginModel);
-    print(response.body);
     late ResponseModel responseModel;
     if (response.statusCode == 200) {
       loginRepo.saveUserToken(token: response.body['request_token']);
       responseModel = ResponseModel(true, response.body['request_token']);
+      Get.offAndToNamed(Routes.mainScreen);
     } else {
       responseModel = ResponseModel(false, response.statusText!);
     }
@@ -111,5 +114,7 @@ class LoginController extends GetxController {
     update();
   }
 
-  void validate() {}
+  bool userLoggedIn() {
+    return loginRepo.userLoggedIn();
+  }
 }

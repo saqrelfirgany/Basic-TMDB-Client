@@ -14,6 +14,18 @@ class LoginRepo extends GetxService {
     required this.sharedPreferences,
   });
 
+  bool userLoggedIn() {
+    return sharedPreferences.containsKey(AppConstants.token);
+  }
+
+  Future<String> getUserToken() async {
+    return sharedPreferences.getString(AppConstants.token) ?? 'none';
+  }
+
+  Future<Response> getServerToken() async {
+    return await apiClient.getData(uri: AppConstants.tokenUri);
+  }
+
   Future<Response> getRegister({required LoginModel loginModel}) async {
     return await apiClient.postData(
       uri: AppConstants.registerUri,
