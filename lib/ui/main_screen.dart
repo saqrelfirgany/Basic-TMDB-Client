@@ -4,6 +4,7 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:tmdb/ui/profile/profile_screen.dart';
 import 'package:tmdb/utils/colors.dart';
 
+import 'auth/sgin_up_screen.dart';
 import 'home/home_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _MainScreenState extends State<MainScreen> {
   List<Widget> _buildScreens() {
     return [
       HomeScreen(),
-      Container(child: Center(child: Text('Favorite'))),
+      SignUpScreen(),
       ProfileScreen(),
     ];
   }

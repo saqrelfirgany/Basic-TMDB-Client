@@ -20,14 +20,21 @@ class ApiClient extends GetConnect implements GetxService {
     _query = {'api_key': AppConstants.apiKey};
   }
 
-  Future<dynamic> getData(String uri) async {
+  void updateHeader({required String token}) {
+    _mainHeaders = {
+      'Content-type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer $token',
+    };
+  }
+
+  Future<dynamic> getData({required String uri}) async {
     try {
       final response = await get(uri, query: _query);
 
       ///
       /// Check if the response is null or not
       ///
-      if (response.body == null || response.hasError) {
+      if (response.body == null) {
         getSnackBar(
           title: 'Error',
           body: 'Please check your internet connection',
@@ -35,6 +42,27 @@ class ApiClient extends GetConnect implements GetxService {
       }
       return response;
     } catch (e) {
+      return Response(statusCode: 1, statusText: e.toString());
+    }
+  }
+
+  Future<dynamic> postData({required String uri, required dynamic body}) async {
+    try {
+      Response response =
+          await post(uri, body, headers: _mainHeaders, query: _query);
+
+      ///
+      /// Check if the response is null or not
+      ///
+      if (response.body == null) {
+        getSnackBar(
+          title: 'Error',
+          body: 'Please check your internet connection',
+        );
+      }
+      return response;
+    } catch (e) {
+      print(e.toString());
       return Response(statusCode: 1, statusText: e.toString());
     }
   }

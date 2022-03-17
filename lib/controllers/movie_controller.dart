@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:tmdb/models/movie_model.dart';
 
-import '../core/repository/product_repo.dart';
+import '../core/repository/movie_repo.dart';
 
 class MovieController extends GetxController {
-  final ProductRepo productRepo;
+  final MovieRepo productRepo;
 
   MovieController({required this.productRepo});
 
@@ -18,7 +18,7 @@ class MovieController extends GetxController {
 
   Future<void> geMovieList() async {
     _isLoading = true;
-    Response response = await productRepo.getProduct();
+    Response response = await productRepo.getMovie();
 
     ///
     /// Check if the response is null or not
