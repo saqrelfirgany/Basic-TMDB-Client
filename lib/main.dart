@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -9,12 +10,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dep.init();
   runApp(
-    // DevicePreview(
-    //   enabled: true,
-    //   tools: [...DevicePreview.defaultTools],
-    //   builder: (context) => const MyApp(),
-    // ),
-    const MyApp(),
+    DevicePreview(
+      enabled: true,
+      tools: [...DevicePreview.defaultTools],
+      builder: (context) => const MyApp(),
+    ),
+    // const MyApp(),
   );
 }
 

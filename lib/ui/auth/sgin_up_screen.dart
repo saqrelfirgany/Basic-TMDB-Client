@@ -31,7 +31,7 @@ class SignUpScreen extends GetWidget<LoginController> {
                   width: 120.h,
                 ),
               ),
-              SizedBox(height: 24.h),
+              SizedBox(height: 40.h),
               GetBuilder<LoginController>(
                 builder: (controller) => Expanded(
                   child: SingleChildScrollView(
@@ -78,7 +78,7 @@ class SignUpScreen extends GetWidget<LoginController> {
                             obscureText: controller.isVisible,
                           ),
                         ),
-                        SizedBox(height: 20.h),
+                        SizedBox(height: 40.h),
                         textFormContainer(
                           child: buttonStadiumBorder(
                             child: Center(
