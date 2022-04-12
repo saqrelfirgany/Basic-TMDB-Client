@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 import 'package:tmdb/models/movie_model.dart';
 
-import '../core/repository/movie_repo.dart';
+import '../repository/movie_repo.dart';
+
 
 class MovieController extends GetxController {
   final MovieRepo productRepo;

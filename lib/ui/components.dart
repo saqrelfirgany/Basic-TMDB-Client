@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../controllers/login_controller.dart';
+import '../controllers/auth_controller.dart';
 import '../theme/theme.dart';
 import '../utils/colors.dart';
 
@@ -38,7 +38,7 @@ Widget textFormContainer({required Widget child}) {
 }
 
 Widget visibility() {
-  return GetBuilder<LoginController>(
+  return GetBuilder<AuthController>(
     builder: (controller) => controller.isVisible
         ? iconVisible(
             press: () => controller.changeVisibility(),

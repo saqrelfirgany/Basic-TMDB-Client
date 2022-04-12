@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:tmdb/core/repository/login_reop.dart';
 import 'package:tmdb/models/login_model.dart';
 import 'package:tmdb/models/response_model.dart';
 import 'package:tmdb/route/routes.dart';
 
+import '../repository/auth_reop.dart';
 import '../ui/components.dart';
 
-class LoginController extends GetxController {
-  final LoginRepo loginRepo;
+class AuthController extends GetxController {
+  final AuthRepo loginRepo;
 
-  LoginController({required this.loginRepo});
+  AuthController({required this.loginRepo});
 
   bool _isLoading = false;
 

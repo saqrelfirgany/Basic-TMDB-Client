@@ -5,11 +5,11 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:tmdb/utils/assets_helper.dart';
 import 'package:tmdb/utils/colors.dart';
 
-import '../../controllers/login_controller.dart';
+import '../../controllers/auth_controller.dart';
 import '../../theme/theme.dart';
 import '../components.dart';
 
-class SignUpScreen extends GetWidget<LoginController> {
+class SignUpScreen extends GetWidget<AuthController> {
   const SignUpScreen({Key? key}) : super(key: key);
 
   @override
@@ -32,7 +32,7 @@ class SignUpScreen extends GetWidget<LoginController> {
                 ),
               ),
               SizedBox(height: 40.h),
-              GetBuilder<LoginController>(
+              GetBuilder<AuthController>(
                 builder: (controller) => Expanded(
                   child: SingleChildScrollView(
                     keyboardDismissBehavior:

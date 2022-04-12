@@ -4,18 +4,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:tmdb/route/routes.dart';
 import 'package:tmdb/ui/splash/splash_screen.dart';
-import 'core/dependencies/dependencies.dart' as dep;
+import '/dependencies/dependencies.dart' as dep;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dep.init();
   runApp(
-    DevicePreview(
-      enabled: true,
-      tools: [...DevicePreview.defaultTools],
-      builder: (context) => const MyApp(),
-    ),
-    // const MyApp(),
+    // DevicePreview(
+    //   enabled: true,
+    //   tools: [...DevicePreview.defaultTools],
+    //   builder: (context) => const MyApp(),
+    // ),
+    const MyApp(),
   );
 }
 

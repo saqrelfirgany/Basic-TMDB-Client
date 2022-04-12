@@ -5,7 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:tmdb/controllers/login_controller.dart';
+import 'package:tmdb/controllers/auth_controller.dart';
 
 import '../../controllers/movie_controller.dart';
 import '../../route/routes.dart';

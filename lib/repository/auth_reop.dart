@@ -5,11 +5,11 @@ import 'package:tmdb/models/login_model.dart';
 import '../../utils/app_constants.dart';
 import '../api/api_client.dart';
 
-class LoginRepo extends GetxService {
+class AuthRepo extends GetxService {
   final ApiClient apiClient;
   final SharedPreferences sharedPreferences;
 
-  LoginRepo({
+  AuthRepo({
     required this.apiClient,
     required this.sharedPreferences,
   });

@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tmdb/controllers/login_controller.dart';
-import 'package:tmdb/core/repository/login_reop.dart';
+import 'package:tmdb/controllers/auth_controller.dart';
 
 import '../../controllers/movie_controller.dart';
 import '../../utils/app_constants.dart';
 import '../api/api_client.dart';
+import '../repository/auth_reop.dart';
 import '../repository/movie_repo.dart';
 
 Future<void> init() async {
@@ -25,7 +25,7 @@ Future<void> init() async {
   ///
   Get.lazyPut(() => MovieRepo(apiClient: Get.find()), fenix: true);
   Get.lazyPut(
-    () => LoginRepo(apiClient: Get.find(), sharedPreferences: Get.find()),
+    () => AuthRepo(apiClient: Get.find(), sharedPreferences: Get.find()),
     fenix: true,
   );
 
@@ -33,5 +33,5 @@ Future<void> init() async {
   /// Controller
   ///
   Get.lazyPut(() => MovieController(productRepo: Get.find()), fenix: true);
-  Get.lazyPut(() => LoginController(loginRepo: Get.find()), fenix: true);
+  Get.lazyPut(() => AuthController(loginRepo: Get.find()), fenix: true);
 }
