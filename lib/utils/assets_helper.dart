@@ -6,8 +6,9 @@ const String images = 'assets/images';
 const Map assets = {
   ///
   ///Splash Screen
-  ///assets/images/logo.png
-  'logo': '$images/logo.png',
+  ///
+
+  'logo': '$images/logo.jpg',
 
   ///
   ///Home Screen

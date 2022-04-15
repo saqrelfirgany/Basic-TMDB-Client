@@ -4,7 +4,10 @@
 - get
 - flutter_screenutil
 - persistent_bottom_nav_bar
-- persistent_bottom_nav_bar
+- url_launcher
+- cached_network_image
+- equatable
+- carousel_slider
 - device_preview
 - shared_preferences
 # Screenshots

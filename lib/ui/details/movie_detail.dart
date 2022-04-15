@@ -60,7 +60,7 @@ class MovieDetailScreen extends StatelessWidget {
                   ),
                 ),
                 child: Center(
-                  child: BigText(text: movie.title, size: 26),
+                  child: BigText(text: movie.title!, size: 26),
                 ),
               ),
             ),
@@ -80,7 +80,7 @@ class MovieDetailScreen extends StatelessWidget {
             children: [
               Container(
                 padding: EdgeInsetsDirectional.all(10.w),
-                child: ExpandableText(text: movie.overview),
+                child: ExpandableText(text: movie.overview!),
               ),
             ],
           )),

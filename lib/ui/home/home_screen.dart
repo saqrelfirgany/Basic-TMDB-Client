@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:tmdb/ui/widgets/big_text.dart';
 import 'package:tmdb/ui/widgets/small_text.dart';
 
 import '../../controllers/movie_controller.dart';
+import '../../theme/theme.dart';
+import '../../utils/assets_helper.dart';
 import '../../utils/colors.dart';
 import 'movie_list.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetWidget<MovieController> {
   const HomeScreen({Key? key}) : super(key: key);
 
   Future<void> _loadData() async {
@@ -20,6 +21,21 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: const Icon(Icons.menu, color: Colors.black45),
+          title: Text('Movies'.toUpperCase(), style: homeTitle),
+          centerTitle: true,
+          actions: [
+            Container(
+              margin: EdgeInsetsDirectional.only(end: 10.w),
+              child: CircleAvatar(
+                backgroundImage: AssetImage(assets['logo']),
+              ),
+            )
+          ],
+        ),
         body: RefreshIndicator(
           onRefresh: _loadData,
           child: Column(

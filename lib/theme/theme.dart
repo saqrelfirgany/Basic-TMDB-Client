@@ -25,6 +25,13 @@ class Themes {
   );
 }
 
+TextStyle get homeTitle => Theme.of(Get.context!).textTheme.caption!.copyWith(
+      color: Colors.black45,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      fontFamily: 'Muli',
+    );
+
 TextStyle get headerStyle {
   return TextStyle(
     fontWeight: FontWeight.bold,

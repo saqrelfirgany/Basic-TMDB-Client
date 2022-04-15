@@ -41,8 +41,8 @@ class ApiClient extends GetConnect implements GetxService {
         );
       }
       return response;
-    } catch (e) {
-      return Response(statusCode: 1, statusText: e.toString());
+    } catch (error, stacktrace) {
+      throw Exception('Exception accrued: $error with stacktrace: $stacktrace');
     }
   }
 

@@ -3,15 +3,14 @@ import 'package:tmdb/models/movie_model.dart';
 
 import '../repository/movie_repo.dart';
 
-
 class MovieController extends GetxController {
   final MovieRepo productRepo;
 
   MovieController({required this.productRepo});
 
-  List<dynamic> _movieList = [];
+  List<MovieModel> _movieList = [];
 
-  List<dynamic> get movieList => _movieList;
+  List<MovieModel> get movieList => _movieList;
 
   bool _isLoading = false;
 
@@ -25,8 +24,10 @@ class MovieController extends GetxController {
     /// Check if the response is null or not
     ///
     _isLoading = false;
-    if (response.statusCode == 200) {
-      _movieList = [];
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      var movies = response.body['results'] as List;
+      _movieList = movies.map((e) => MovieModel.fromJson(e)).toList();
+
       _movieList.addAll(Movie.fromJson(response.body).movies);
       print(_movieList.length);
       _isLoading = false;

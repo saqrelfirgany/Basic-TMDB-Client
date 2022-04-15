@@ -97,7 +97,7 @@ class MovieList extends StatelessWidget {
                                     IconText(
                                       icon: Icons.visibility,
                                       text: movieController
-                                          .movieList[index].popularity
+                                          .movieList[index].popularity!
                                           .toInt()
                                           .toString(),
                                       iconColor: AppColors.mainColor,
